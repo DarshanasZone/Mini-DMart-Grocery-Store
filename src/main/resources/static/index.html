@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini-DMart — Online Grocery Shopping</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/cards.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <span>🚚 <strong>Free Home Delivery</strong> on grocery orders above ₹500!</span>
+      <span>⏰ Open Daily: 7:00 AM – 11:00 PM</span>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <a href="/index.html" class="brand-logo">
+          🛒 Mini-DMart <span class="logo-badge">Daily Fresh</span>
+        </a>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" placeholder="Search milk, fruits, basmati rice, bread..." onkeydown="if(event.key==='Enter') window.location.href='/products.html?q='+encodeURIComponent(this.value)" />
+        </div>
+
+        <nav class="nav-actions">
+          <a href="/products.html" class="nav-link">🥦 Products</a>
+          <a href="/orders.html" class="nav-link" id="customerOrdersNav" style="display:none;">📦 My Orders</a>
+          <a href="/returns.html" class="nav-link" id="customerReturnsNav" style="display:none;">🔄 Returns</a>
+          <a href="/exchanges.html" class="nav-link" id="customerExchangesNav" style="display:none;">🔁 Exchanges</a>
+          <a href="/admin/dashboard.html" class="nav-link" id="adminPortalNav" style="display:none; color:var(--secondary); font-weight:700;">⚙️ Admin Portal</a>
+          
+          <a href="/cart.html" class="cart-btn">
+            <span>🛒 Cart</span>
+            <span class="cart-count" id="cartBadgeCount">0</span>
+          </a>
+
+          <div id="authNav"></div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Category Ribbon -->
+    <div class="category-ribbon">
+      <div class="container">
+        <div class="category-pills" id="categoryRibbonPills">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Banner -->
+    <section style="background: linear-gradient(135deg, #0b5e2b 0%, #108e43 100%); color:var(--white); padding: 50px 0; margin-bottom: 30px;">
+      <div class="container" style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:30px; align-items:center;">
+        <div>
+          <span style="background:var(--secondary); font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:var(--radius-full); text-transform:uppercase;">Daily Best Prices</span>
+          <h1 style="font-size:2.5rem; font-weight:900; line-height:1.2; margin:16px 0;">Quality Groceries Delivered to Your Doorstep</h1>
+          <p style="font-size:1.05rem; opacity:0.9; margin-bottom:24px;">Shop fresh fruits, vegetables, dairy, household essentials, and daily staples at DMart discount prices.</p>
+          <div style="display:flex; gap:12px;">
+            <a href="/products.html" class="btn btn-secondary btn-lg">Shop Now ➔</a>
+            <a href="/products.html" class="btn btn-outline btn-lg" style="color:var(--white); border-color:rgba(255,255,255,0.4);">View Offers</a>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&auto=format&fit=crop&q=80" alt="Fresh Groceries" style="width:100%; max-height:280px; object-fit:cover; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg);" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Categories & Products -->
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <div>
+          <h2 style="font-size:1.5rem; font-weight:800; color:var(--dark);">Fresh Picks & Daily Essentials</h2>
+          <p style="color:var(--gray-500); font-size:0.9rem;">Handpicked grocery items guaranteed for quality & freshness</p>
+        </div>
+        <a href="/products.html" class="btn btn-outline btn-sm">View All Groceries ➔</a>
+      </div>
+
+      <div class="product-grid" id="featuredProductsGrid">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Trust Badges -->
+      <section style="background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--gray-200); padding:30px; margin:40px 0; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px; box-shadow:var(--shadow-sm);">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="font-size:2rem; background:var(--primary-light); width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center;">🚚</div>
+          <div>
+            <h4 style="font-weight:700;">Fast Home Delivery</h4>
+            <p style="font-size:0.8rem; color:var(--gray-500);">Delivered fresh at scheduled slots</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="font-size:2rem; background:var(--primary-light); width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center;">💰</div>
+          <div>
+            <h4 style="font-weight:700;">DMart Everyday Value</h4>
+            <p style="font-size:0.8rem; color:var(--gray-500);">Unmatched wholesale grocery rates</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="font-size:2rem; background:var(--primary-light); width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center;">🔄</div>
+          <div>
+            <h4 style="font-weight:700;">Easy Returns & Exchanges</h4>
+            <p style="font-size:0.8rem; color:var(--gray-500);">Hassle-free replacement policy</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="font-size:2rem; background:var(--primary-light); width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center;">🏬</div>
+          <div>
+            <h4 style="font-weight:700;">Store Pickup Option</h4>
+            <p style="font-size:0.8rem; color:var(--gray-500);">Click and collect at your local store</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 style="color:var(--white); font-weight:800; margin-bottom:10px;">🛒 Mini-DMart</h3>
+          <p style="font-size:0.85rem; line-height:1.6; margin-bottom:12px;">Your neighborhood one-stop supermarket providing high quality groceries, personal care, and household items at discounted prices.</p>
+          <p style="font-size:0.8rem; color:#64748b;">Powered by Spring Boot 3 & PostgreSQL</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Departments</h4>
+          <ul class="footer-links">
+            <li><a href="/products.html">Dairy & Farm Eggs</a></li>
+            <li><a href="/products.html">Fruits & Vegetables</a></li>
+            <li><a href="/products.html">Bakery & Snacks</a></li>
+            <li><a href="/products.html">Staples & Grains</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="/orders.html">Track Order</a></li>
+            <li><a href="/returns.html">Return Request</a></li>
+            <li><a href="/exchanges.html">Product Exchange</a></li>
+            <li><a href="/swagger-ui/index.html" target="_blank">OpenAPI / Swagger</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Demo Accounts</h4>
+          <p style="font-size:0.8rem; line-height:1.5;"><strong>Customer:</strong><br>customer@dmart.com / Customer@123</p>
+          <p style="font-size:0.8rem; line-height:1.5; margin-top:8px;"><strong>Admin:</strong><br>admin@dmart.com / Admin@123</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Mini-DMart Online Grocery Shopping. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/products.js"></script>
+</body>
+</html>

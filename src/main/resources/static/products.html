@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grocery Catalog — Mini-DMart</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/cards.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <span>🚚 <strong>Free Home Delivery</strong> on orders above ₹500!</span>
+      <span>📞 Helpline: 1800-200-DMART</span>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <a href="/index.html" class="brand-logo">
+          🛒 Mini-DMart <span class="logo-badge">Daily Fresh</span>
+        </a>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="catalogSearchInput" class="search-input" placeholder="Search milk, bread, vegetables, rice..." />
+        </div>
+
+        <nav class="nav-actions">
+          <a href="/products.html" class="nav-link" style="color:var(--primary);">🥦 Products</a>
+          <a href="/orders.html" class="nav-link" id="customerOrdersNav" style="display:none;">📦 My Orders</a>
+          <a href="/returns.html" class="nav-link" id="customerReturnsNav" style="display:none;">🔄 Returns</a>
+          <a href="/exchanges.html" class="nav-link" id="customerExchangesNav" style="display:none;">🔁 Exchanges</a>
+          <a href="/admin/dashboard.html" class="nav-link" id="adminPortalNav" style="display:none; color:var(--secondary); font-weight:700;">⚙️ Admin</a>
+          
+          <a href="/cart.html" class="cart-btn">
+            <span>🛒 Cart</span>
+            <span class="cart-count" id="cartBadgeCount">0</span>
+          </a>
+
+          <div id="authNav"></div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Category Ribbon -->
+    <div class="category-ribbon">
+      <div class="container">
+        <div class="category-pills" id="categoryRibbonPills">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <div>
+        <h1 style="font-size:1.6rem; font-weight:800; color:var(--dark);">All Grocery Departments</h1>
+        <p style="color:var(--gray-500); font-size:0.9rem;">Browse fresh, certified, and daily essential inventory</p>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid" id="productCatalogGrid">
+      <!-- Populated by JS -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      &copy; 2026 Mini-DMart Online Grocery Shopping.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/products.js"></script>
+</body>
+</html>

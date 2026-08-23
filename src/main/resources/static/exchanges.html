@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Exchanges — Mini-DMart</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/tables.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="/index.html" class="brand-logo">
+        🛒 Mini-DMart <span class="logo-badge">Daily Fresh</span>
+      </a>
+
+      <nav class="nav-actions">
+        <a href="/products.html" class="nav-link">🥦 Products</a>
+        <a href="/orders.html" class="nav-link">📦 My Orders</a>
+        <a href="/returns.html" class="nav-link">🔄 Returns</a>
+        <a href="/exchanges.html" class="nav-link" style="color:var(--primary); font-weight:700;">🔁 Exchanges</a>
+        <a href="/cart.html" class="cart-btn">
+          <span>🛒 Cart</span>
+          <span class="cart-count" id="cartBadgeCount">0</span>
+        </a>
+        <div id="authNav"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding:36px 20px;">
+    <h1 style="font-size:1.6rem; font-weight:800; color:var(--dark); margin-bottom:20px;">Grocery Product Exchanges</h1>
+
+    <div style="display:grid; grid-template-columns:1fr 2fr; gap:30px; align-items:start;">
+      <!-- Submit Request Form -->
+      <div style="background:var(--white); border-radius:var(--radius-md); border:1px solid var(--gray-200); padding:24px; box-shadow:var(--shadow-sm);">
+        <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:16px;">Request Item Exchange</h3>
+        <p style="font-size:0.85rem; color:var(--gray-500); margin-bottom:16px;">Select an item from your delivered order and pick a replacement product.</p>
+
+        <form id="exchangeForm" onsubmit="handleExchangeSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Delivered Order ID *</label>
+            <input type="number" id="exchangeOrderIdInput" class="form-control" placeholder="e.g. 1" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Item to Exchange *</label>
+            <select id="exchangeOldProductSelect" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Desired Replacement Product *</label>
+            <select id="exchangeNewProductSelect" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Reason for Exchange *</label>
+            <textarea id="exchangeReasonInput" class="form-control" rows="2" placeholder="e.g. Ordered wrong milk variant, prefer toned milk..." required minlength="5"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Submit Exchange Request</button>
+        </form>
+      </div>
+
+      <!-- Exchange History -->
+      <div style="background:var(--white); border-radius:var(--radius-md); border:1px solid var(--gray-200); padding:24px; box-shadow:var(--shadow-sm);">
+        <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:16px;">My Exchange History</h3>
+        <div id="exchangesHistoryContainer">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      &copy; 2026 Mini-DMart Online Grocery Shopping.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/exchanges.js"></script>
+</body>
+</html>

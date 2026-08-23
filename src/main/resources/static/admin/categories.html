@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Categories — Mini-DMart Admin</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/tables.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="/index.html" class="brand-logo">
+        🛒 Mini-DMart <span class="logo-badge" style="background:var(--danger);">Admin Console</span>
+      </a>
+      <div id="authNav"></div>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <span>⚡ Store Operations</span>
+      </div>
+      <ul class="admin-menu">
+        <li class="admin-menu-item"><a href="/admin/dashboard.html" class="admin-menu-link">📊 Dashboard Overview</a></li>
+        <li class="admin-menu-item"><a href="/admin/categories.html" class="admin-menu-link active">🗂️ Categories</a></li>
+        <li class="admin-menu-item"><a href="/admin/products.html" class="admin-menu-link">🥦 Products & Stock</a></li>
+        <li class="admin-menu-item"><a href="/admin/orders.html" class="admin-menu-link">📦 Orders Lifecycle</a></li>
+        <li class="admin-menu-item"><a href="/admin/returns.html" class="admin-menu-link">🔄 Return Approvals</a></li>
+        <li class="admin-menu-item"><a href="/admin/exchanges.html" class="admin-menu-link">🔁 Exchange Approvals</a></li>
+        <li class="admin-menu-item"><a href="/admin/audit-logs.html" class="admin-menu-link">📜 Audit Trail</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h1 class="admin-title">Department Categories</h1>
+          <p style="color:var(--gray-500); font-size:0.9rem;">Organize store departments and catalog classifications</p>
+        </div>
+        <button class="btn btn-primary" onclick="openCategoryModal()">+ Add Category</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Category Name</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminCategoriesTable">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add/Edit Category Modal -->
+  <div class="modal-backdrop" id="categoryModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="categoryModalTitle">Add Department Category</h3>
+        <button class="modal-close" onclick="closeModal('categoryModal')">&times;</button>
+      </div>
+      <form id="categoryForm" onsubmit="handleCategorySubmit(event)">
+        <div class="modal-body">
+          <input type="hidden" id="categoryIdInput" />
+          <div class="form-group">
+            <label class="form-label">Category Name *</label>
+            <input type="text" id="categoryNameInput" class="form-control" placeholder="e.g. Dairy & Eggs" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="categoryDescInput" class="form-control" rows="3" placeholder="Brief details about this grocery department..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('categoryModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

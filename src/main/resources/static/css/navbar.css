@@ -1,0 +1,153 @@
+/* Mini-DMart Navbar Stylesheet */
+.header {
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.top-bar {
+  background-color: #0b5e2b;
+  color: #d1fae5;
+  font-size: 0.8rem;
+  padding: 6px 0;
+}
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 0;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+}
+.brand-logo .logo-badge {
+  background-color: var(--secondary);
+  color: var(--white);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.search-box {
+  flex: 1;
+  max-width: 550px;
+  position: relative;
+}
+.search-input {
+  width: 100%;
+  padding: 11px 16px 11px 42px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--gray-300);
+  background-color: var(--gray-100);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.search-input:focus {
+  background-color: var(--white);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(16, 142, 67, 0.12);
+}
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-500);
+  font-size: 1.1rem;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+.nav-link:hover {
+  background-color: var(--gray-100);
+  color: var(--primary);
+}
+
+.cart-btn {
+  position: relative;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.cart-btn:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.cart-count {
+  background-color: var(--secondary);
+  color: var(--white);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  padding: 2px 7px;
+  font-weight: 800;
+}
+
+.category-ribbon {
+  background-color: #f8fafc;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 10px 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.category-pills {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.cat-pill {
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background-color: var(--white);
+  border: 1px solid var(--gray-300);
+  color: var(--gray-700);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.cat-pill:hover, .cat-pill.active {
+  background-color: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}

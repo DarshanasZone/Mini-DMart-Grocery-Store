@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — Mini-DMart</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="/index.html" class="brand-logo">
+        🛒 Mini-DMart <span class="logo-badge">Daily Fresh</span>
+      </a>
+      <div id="authNav"></div>
+    </div>
+  </header>
+
+  <main style="display:flex; align-items:center; justify-content:center; padding:50px 20px;">
+    <div style="background:var(--white); width:100%; max-width:460px; border-radius:var(--radius-lg); border:1px solid var(--gray-200); box-shadow:var(--shadow-md); padding:36px;">
+      <div style="text-align:center; margin-bottom:24px;">
+        <span style="font-size:2.5rem;">👋</span>
+        <h2 style="font-size:1.5rem; font-weight:800; color:var(--dark); margin-top:8px;">Create Customer Account</h2>
+        <p style="color:var(--gray-500); font-size:0.9rem;">Join Mini-DMart to enjoy supermarket wholesale prices</p>
+      </div>
+
+      <form id="registerForm" onsubmit="handleRegisterSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" id="regName" class="form-control" placeholder="e.g. Darshana Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address *</label>
+          <input type="email" id="regEmail" class="form-control" placeholder="darshana@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password * (Min 6 chars)</label>
+          <input type="password" id="regPassword" class="form-control" placeholder="••••••••" minlength="6" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:10px;">
+          Register Now ➔
+        </button>
+      </form>
+
+      <div style="text-align:center; margin-top:20px; font-size:0.9rem; color:var(--gray-500);">
+        Already have an account? <a href="/login.html" style="font-weight:700;">Sign In</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    async function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+
+      try {
+        const res = await api.post('/auth/register', { name, email, password });
+        api.showToast('Registration successful! Please login.', 'success');
+        setTimeout(() => {
+          window.location.href = '/login.html';
+        }, 1200);
+      } catch (err) {
+        api.showToast(err.message || 'Registration failed', 'error');
+      }
+    }
+  </script>
+</body>
+</html>

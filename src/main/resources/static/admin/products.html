@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Products — Mini-DMart Admin</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/tables.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="/index.html" class="brand-logo">
+        🛒 Mini-DMart <span class="logo-badge" style="background:var(--danger);">Admin Console</span>
+      </a>
+      <div id="authNav"></div>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <span>⚡ Store Operations</span>
+      </div>
+      <ul class="admin-menu">
+        <li class="admin-menu-item"><a href="/admin/dashboard.html" class="admin-menu-link">📊 Dashboard Overview</a></li>
+        <li class="admin-menu-item"><a href="/admin/categories.html" class="admin-menu-link">🗂️ Categories</a></li>
+        <li class="admin-menu-item"><a href="/admin/products.html" class="admin-menu-link active">🥦 Products & Stock</a></li>
+        <li class="admin-menu-item"><a href="/admin/orders.html" class="admin-menu-link">📦 Orders Lifecycle</a></li>
+        <li class="admin-menu-item"><a href="/admin/returns.html" class="admin-menu-link">🔄 Return Approvals</a></li>
+        <li class="admin-menu-item"><a href="/admin/exchanges.html" class="admin-menu-link">🔁 Exchange Approvals</a></li>
+        <li class="admin-menu-item"><a href="/admin/audit-logs.html" class="admin-menu-link">📜 Audit Trail</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h1 class="admin-title">Grocery Products & Inventory</h1>
+          <p style="color:var(--gray-500); font-size:0.9rem;">Add items, adjust prices, and manage real-time inventory stock</p>
+        </div>
+        <button class="btn btn-primary" onclick="openProductModal()">+ Add Product</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product</th>
+              <th>Unit Price</th>
+              <th>Stock</th>
+              <th>Catalog Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminProductsTable">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add/Edit Product Modal -->
+  <div class="modal-backdrop" id="productModal">
+    <div class="modal-card" style="max-width:620px;">
+      <div class="modal-header">
+        <h3 id="productModalTitle">Add Grocery Product</h3>
+        <button class="modal-close" onclick="closeModal('productModal')">&times;</button>
+      </div>
+      <form id="productForm" onsubmit="handleProductSubmit(event)">
+        <div class="modal-body" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <input type="hidden" id="productIdInput" />
+          
+          <div class="form-group" style="grid-column:1/-1;">
+            <label class="form-label">Product Name *</label>
+            <input type="text" id="productNameInput" class="form-control" placeholder="e.g. Amul Gold Milk 1L" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="productCategorySelect" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Unit Price (₹) *</label>
+            <input type="number" id="productPriceInput" step="0.01" min="0.01" class="form-control" placeholder="e.g. 64.00" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Stock Quantity *</label>
+            <input type="number" id="productStockInput" min="0" class="form-control" placeholder="e.g. 50" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Image URL</label>
+            <input type="url" id="productImageUrlInput" class="form-control" placeholder="https://images.unsplash.com/..." />
+          </div>
+
+          <div class="form-group" style="grid-column:1/-1;">
+            <label class="form-label">Description</label>
+            <textarea id="productDescInput" class="form-control" rows="2" placeholder="Quality product specifications, weight, or shelf life..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('productModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

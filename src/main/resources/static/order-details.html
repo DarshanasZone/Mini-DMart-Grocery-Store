@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Details — Mini-DMart</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/tables.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="/index.html" class="brand-logo">
+        🛒 Mini-DMart <span class="logo-badge">Daily Fresh</span>
+      </a>
+
+      <nav class="nav-actions">
+        <a href="/products.html" class="nav-link">🥦 Products</a>
+        <a href="/orders.html" class="nav-link">📦 My Orders</a>
+        <a href="/cart.html" class="cart-btn">
+          <span>🛒 Cart</span>
+          <span class="cart-count" id="cartBadgeCount">0</span>
+        </a>
+        <div id="authNav"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding:36px 20px;">
+    <div id="customerOrderDetailView">
+      <!-- Populated by JS -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      &copy; 2026 Mini-DMart Online Grocery Shopping.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/orders.js"></script>
+</body>
+</html>

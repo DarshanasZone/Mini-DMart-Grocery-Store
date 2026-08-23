@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — Mini-DMart</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/tables.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="/index.html" class="brand-logo">
+        🛒 Mini-DMart <span class="logo-badge" style="background:var(--danger);">Admin Console</span>
+      </a>
+      <div id="authNav"></div>
+    </div>
+  </header>
+
+  <div class="admin-layout" id="adminDashboardContainer">
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <span>⚡ Store Operations</span>
+      </div>
+      <ul class="admin-menu">
+        <li class="admin-menu-item"><a href="/admin/dashboard.html" class="admin-menu-link active">📊 Dashboard Overview</a></li>
+        <li class="admin-menu-item"><a href="/admin/categories.html" class="admin-menu-link">🗂️ Categories</a></li>
+        <li class="admin-menu-item"><a href="/admin/products.html" class="admin-menu-link">🥦 Products & Stock</a></li>
+        <li class="admin-menu-item"><a href="/admin/orders.html" class="admin-menu-link">📦 Orders Lifecycle</a></li>
+        <li class="admin-menu-item"><a href="/admin/returns.html" class="admin-menu-link">🔄 Return Approvals</a></li>
+        <li class="admin-menu-item"><a href="/admin/exchanges.html" class="admin-menu-link">🔁 Exchange Approvals</a></li>
+        <li class="admin-menu-item"><a href="/admin/audit-logs.html" class="admin-menu-link">📜 Audit Trail</a></li>
+        <li class="admin-menu-item" style="margin-top:20px; border-top:1px solid var(--dark-light); padding-top:10px;">
+          <a href="/index.html" class="admin-menu-link">🏪 Storefront View</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h1 class="admin-title">Store Performance Dashboard</h1>
+          <p style="color:var(--gray-500); font-size:0.9rem;">Real-time metrics and order fulfillment overview</p>
+        </div>
+      </div>
+
+      <!-- KPI Metrics Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon kpi-icon-green">💰</div>
+          <div class="kpi-details">
+            <h4>Total Revenue</h4>
+            <p id="kpiRevenue">₹0.00</p>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon kpi-icon-blue">📦</div>
+          <div class="kpi-details">
+            <h4>Total Orders</h4>
+            <p id="kpiOrders">0</p>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon kpi-icon-orange">🥦</div>
+          <div class="kpi-details">
+            <h4>Live Catalog Items</h4>
+            <p id="kpiProducts">0</p>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon kpi-icon-purple">⏳</div>
+          <div class="kpi-details">
+            <h4>Pending Returns/Exchanges</h4>
+            <p id="kpiPendingTasks">0</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders Table -->
+      <div style="background:var(--white); border-radius:var(--radius-md); border:1px solid var(--gray-200); padding:24px; box-shadow:var(--shadow-sm);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <h3 style="font-size:1.15rem; font-weight:700;">Recent Customer Orders</h3>
+          <a href="/admin/orders.html" class="btn btn-outline btn-sm">Manage All Orders ➔</a>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="dashboardRecentOrders">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

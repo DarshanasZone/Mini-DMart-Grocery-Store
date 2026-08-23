@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Logs — Mini-DMart Admin</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/tables.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="/index.html" class="brand-logo">
+        🛒 Mini-DMart <span class="logo-badge" style="background:var(--danger);">Admin Console</span>
+      </a>
+      <div id="authNav"></div>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <span>⚡ Store Operations</span>
+      </div>
+      <ul class="admin-menu">
+        <li class="admin-menu-item"><a href="/admin/dashboard.html" class="admin-menu-link">📊 Dashboard Overview</a></li>
+        <li class="admin-menu-item"><a href="/admin/categories.html" class="admin-menu-link">🗂️ Categories</a></li>
+        <li class="admin-menu-item"><a href="/admin/products.html" class="admin-menu-link">🥦 Products & Stock</a></li>
+        <li class="admin-menu-item"><a href="/admin/orders.html" class="admin-menu-link">📦 Orders Lifecycle</a></li>
+        <li class="admin-menu-item"><a href="/admin/returns.html" class="admin-menu-link">🔄 Return Approvals</a></li>
+        <li class="admin-menu-item"><a href="/admin/exchanges.html" class="admin-menu-link">🔁 Exchange Approvals</a></li>
+        <li class="admin-menu-item"><a href="/admin/audit-logs.html" class="admin-menu-link active">📜 Audit Trail</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h1 class="admin-title">System Audit Log Trail</h1>
+          <p style="color:var(--gray-500); font-size:0.9rem;">Immutable chronological record of administrative actions, status updates, and transactions</p>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Log ID</th>
+              <th>Timestamp</th>
+              <th>Operator</th>
+              <th>Action</th>
+              <th>Entity</th>
+              <th>Description / Details</th>
+            </tr>
+          </thead>
+          <tbody id="adminAuditLogsTable">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

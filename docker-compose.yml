@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database Service
+  postgres_db:
+    image: postgres:16-alpine
+    container_name: minidmart-postgres
+    environment:
+      POSTGRES_DB: mini_dmart
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - minidmart-net
+
+  # Mini-DMart Spring Boot Application Service
+  backend_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: minidmart-app
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/mini_dmart
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SERVER_PORT: 8090
+    depends_on:
+      - postgres_db
+    restart: unless-stopped
+    networks:
+      - minidmart-net
+
+volumes:
+  postgres_data:
+
+networks:
+  minidmart-net:
+    driver: bridge

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Returns — Mini-DMart</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/tables.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="/index.html" class="brand-logo">
+        🛒 Mini-DMart <span class="logo-badge">Daily Fresh</span>
+      </a>
+
+      <nav class="nav-actions">
+        <a href="/products.html" class="nav-link">🥦 Products</a>
+        <a href="/orders.html" class="nav-link">📦 My Orders</a>
+        <a href="/returns.html" class="nav-link" style="color:var(--primary); font-weight:700;">🔄 Returns</a>
+        <a href="/exchanges.html" class="nav-link">🔁 Exchanges</a>
+        <a href="/cart.html" class="cart-btn">
+          <span>🛒 Cart</span>
+          <span class="cart-count" id="cartBadgeCount">0</span>
+        </a>
+        <div id="authNav"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding:36px 20px;">
+    <h1 style="font-size:1.6rem; font-weight:800; color:var(--dark); margin-bottom:20px;">Grocery Return Requests</h1>
+
+    <div style="display:grid; grid-template-columns:1fr 2fr; gap:30px; align-items:start;">
+      <!-- Submit Request Form -->
+      <div style="background:var(--white); border-radius:var(--radius-md); border:1px solid var(--gray-200); padding:24px; box-shadow:var(--shadow-sm);">
+        <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:16px;">Submit Return</h3>
+        <p style="font-size:0.85rem; color:var(--gray-500); margin-bottom:16px;">Returns are accepted for delivered grocery orders within 24 hours.</p>
+
+        <form id="returnForm" onsubmit="handleReturnSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Delivered Order ID *</label>
+            <input type="number" id="returnOrderIdInput" class="form-control" placeholder="e.g. 1" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Reason for Return *</label>
+            <textarea id="returnReasonInput" class="form-control" rows="3" placeholder="e.g. Packaging damaged, wrong item received..." required minlength="5"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Submit Return Request</button>
+        </form>
+      </div>
+
+      <!-- Return History -->
+      <div style="background:var(--white); border-radius:var(--radius-md); border:1px solid var(--gray-200); padding:24px; box-shadow:var(--shadow-sm);">
+        <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:16px;">My Return History</h3>
+        <div id="returnsHistoryContainer">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      &copy; 2026 Mini-DMart Online Grocery Shopping.
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/returns.js"></script>
+</body>
+</html>

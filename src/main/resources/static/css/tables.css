@@ -1,0 +1,50 @@
+/* Mini-DMart Tables & Order UI */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.table th {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+  font-weight: 700;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--gray-200);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background-color: #fafbfc;
+}
+
+.order-status-PLACED    { background: #e0f2fe; color: #0369a1; }
+.order-status-CONFIRMED { background: #fef3c7; color: #b45309; }
+.order-status-SHIPPED   { background: #ede9fe; color: #6d28d9; }
+.order-status-DELIVERED { background: #dcfce7; color: #15803d; }
+.order-status-CANCELLED { background: #fee2e2; color: #b91c1c; }
+
+.return-status-REQUESTED { background: #fef3c7; color: #b45309; }
+.return-status-APPROVED  { background: #dcfce7; color: #15803d; }
+.return-status-REJECTED  { background: #fee2e2; color: #b91c1c; }
+.return-status-COMPLETED { background: #e0f2fe; color: #0369a1; }
